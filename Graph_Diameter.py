@@ -1,11 +1,4 @@
 from collections import defaultdict, deque
-import enum
-
-
-Not_Visited = 0
-Visiting = 1
-Visited = 2
-
 
 graph = {
     'a': ['b', 'd', 'e'],
@@ -18,7 +11,6 @@ graph = {
     'i': [],
     'h': ['i']
 }
-status = defaultdict(int)
 
 max_path_nodes = defaultdict(int)
 
@@ -27,9 +19,7 @@ def dfs_path(v1, v2):
     global max_path_nodes
     if v1 == v2:
         return 0
-#     if max_path_nodes[(v1, v2)] == 0:
-        # max_path_nodes[(v1, v2)] = 1 + max([dfs_path(nbr, v2)
-        #     for nbr in graph[v1]])
+    
     for nbr in graph[v1]:
         max_path_nodes[(v1, v2)] = max(
             max_path_nodes[(v1, v2)], 1 + dfs_path(nbr, v2))
